@@ -29,7 +29,7 @@ addProduct(){
         }
        
        
-    ProductManager.id + 1
+    ProductManager.id ++ 
         array.push({productos});
         
     }
