@@ -26,5 +26,9 @@ addProduct(){
 
 
 let producto1 = new ProductManager("regla" , "30 cm" , 50 , "www.regla.com" , 4543 , 23);
+producto1.addProduct();
+let producto2 = new ProductManager("escuadra" , "triangular" , 12, "www.escuadra.com" , 1323 , 12);
+producto2.addProduct();
     
-console.log(producto1);
+
+console.log(array)
