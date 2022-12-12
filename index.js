@@ -1,58 +1,30 @@
+const array = []
+
 class ProductManager{
-    products;
-     constructor(title){
-      this.products=[
+
+     constructor(title , descriptions , price , thumbnail , code , stock){
         this.title = title,
-        this.descriptions=[],
-        this.price = [],
-        this.thumbnail = [],
-        this.code = [],
-        this.stock = [],
-      ]
-    }
-
-getTitle = () =>{
-    return (`${this.title}`)
-}
-addDescription = (description) =>{
-    this.descriptions.push(description)
-}
-addPrice = (prices) =>{
-    this.price.push(prices)
-}
-addThumbnail = (thumbnails) =>{
-    this.thumbnail.push(thumbnails)
-}
-addCode = (codes) =>{
-    this.code.push(codes)
-}
-addStocks = (stocks) =>{
-    this.stock.push(stocks)
+        this.descriptions= descriptions,
+         this.price = price,
+        this.thumbnail = thumbnail ,
+        this.code =code ,
+        this.stock = stock
+     }
     
-}
-
-getProducts = () =>{
-    this.products.map(products => {
-        return console.log(`${products.title}`)
+      
+    
+addProduct(){
+    array.push({
+        title : this.title,
+        descriptions: this.descriptions,
+        price : this.price ,
+        thumbnail : this.thumbnail,
+        code :  this.code,
+        stock : this.stock
     })
-}
-    }
+}}
 
 
-let producto1 = new ProductManager("regla");
-producto1.addDescription("30CM");
-producto1.addCode("34432");
-producto1.addPrice("100$");
-producto1.addStocks("10");
-producto1.addThumbnail("wwww.regla.com")
-
-let producto2 = new ProductManager("escuadra");
-producto2.addDescription("triangular");
-producto2.addCode("5555");
-producto2.addPrice("300$");
-producto2.addStocks("30");
-producto2.addThumbnail("wwww.escuadra.com")
-
+let producto1 = new ProductManager("regla" , "30 cm" , 50 , "www.regla.com" , 4543 , 23);
+    
 console.log(producto1);
-console.log(producto2);
-
