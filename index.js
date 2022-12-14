@@ -39,8 +39,12 @@ addProduct(){
 
 const found = getProducts.find(code =>{
 
-    return code == this.code;
+     code == this.code;
+     If (found)
+     {
+         throw new Error('hay codes iguales') }
 })
+
 
 
 let producto1 = new ProductManager("regla" , "30 cm" , 50 , "www.regla.com" , 1323 , 23 );
@@ -56,4 +60,4 @@ producto3.addProduct();
 
 
 
-console.log(found);
+console.log(getProducts);
