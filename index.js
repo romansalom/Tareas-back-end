@@ -1,4 +1,4 @@
-const array = []
+const getProducts = []
 
 class ProductManager{
     static id = 1;
@@ -30,11 +30,17 @@ addProduct(){
        
        
     ProductManager.id ++ 
-        array.push({productos});
+        getProducts.push({productos});
         
     }
-    
+
+
 }
+
+const found = getProducts.find(code =>{
+
+    return code == this.code;
+})
 
 
 let producto1 = new ProductManager("regla" , "30 cm" , 50 , "www.regla.com" , 1323 , 23 );
@@ -48,4 +54,6 @@ producto3.addProduct();
     
 
 
-console.log(array);
+
+
+console.log(found);
