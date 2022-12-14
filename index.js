@@ -31,32 +31,34 @@ addProduct(){
        
     ProductManager.id ++ 
         getProducts.push({productos});
-        
+
+
+        const verificarCodigo = getProducts.find(elemento => elemento.code === productos.code) 
+           
+       if (verificarCodigo)
+       {
+        throw new Error('hay codes iguales')  }
+        else{
+            getProducts.push(productos)
+            
+        }
     }
 
 
 }
 
-const found = getProducts.find(code =>{
 
-     code == this.code;
-    
-})
-if(found)
-{
-    throw new Error('hay codes iguales') }
 
 
 let producto1 = new ProductManager("regla" , "30 cm" , 50 , "www.regla.com" , 1323 , 23 );
 
 
 producto1.addProduct();
-let producto2 = new ProductManager("escuadra" , "triangular" , 12, "www.escuadra.com" , 1323 , 12);
+let producto2 = new ProductManager("escuadra" , "triangular" , 12, "www.escuadra.com" , 1200 , 12);
 producto2.addProduct();
-let producto3 = new ProductManager("lapiz" , "de color" , 11, "www.lapizdecolores.com" , 1200 , 6);
+let producto3 = new ProductManager("lapiz" , "de color" , 11, "www.lapizdecolores.com" , 100 , 6);
 producto3.addProduct();
     
-
 
 
 
