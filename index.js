@@ -39,7 +39,7 @@ addProduct(){
 
 const found = getProducts.find(code =>{
 
-     this.code == this.code;
+     code == this.code;
     
 })
 if(found)
