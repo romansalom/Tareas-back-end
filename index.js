@@ -42,9 +42,19 @@ addProduct(){
             getProducts.push(productos);
             
         }
+
+       
+    
     }
 
-
+     getById(id){
+        const getProducts =this.getAll()
+        if(!this.checkLength(getProducts)){
+            return
+        }
+        let productos = getProducts.find(element => element.id == id)
+        return productos ? productos : null
+    }
 }
 
 
