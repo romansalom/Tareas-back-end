@@ -1,9 +1,12 @@
-const getProducts = []
+const fs = require('fs');
 
+const products = [];
 class ProductManager{
     static id = 1;
+   
     
-     constructor(title , descriptions , price , thumbnail , code , stock , id){
+     constructor(title , descriptions , price , thumbnail , code , stock , id ){
+       this.products = [],
         this.title = title,
         this.descriptions= descriptions,
          this.price = price,
@@ -15,7 +18,7 @@ class ProductManager{
    
     
 addProduct(){
-
+   
     const productos = {
        
         title : this.title,
@@ -26,20 +29,21 @@ addProduct(){
         stock : this.stock,
         id : ProductManager.id,
         
+        
+        
         }
        
        
 
 
-
-        const verificarCodigo = getProducts.find(elemento => elemento.code === productos.code) 
+        const verificarCodigo = products.find(elemento => elemento.code === productos.code) 
            
        if (verificarCodigo)
        {
         throw new Error('hay codes iguales')  }
         else{
             ProductManager.id ++ 
-            getProducts.push(productos);
+            products.push(productos);
             
         }
 
@@ -48,15 +52,37 @@ addProduct(){
     }
 
      getById(id){
-        const getProducts =this.getAll()
-        if(!this.checkLength(getProducts)){
+        const products =this.getAll()
+        if(!this.checkLength(products)){
             return
         }
-        let productos = getProducts.find(element => element.id == id)
+        let productos = products.find(elemento => elemento.id == id)
         return productos ? productos : null
     }
-}
+    checkLength(arr){
+        if (arr.length === 0){
+            console.error('El array esta vacio')
+            return false
+        }
+        return true
+    }
 
+   
+
+    guardarCambios(){
+        fs.writeFileSync('products.json' , JSON.stringify(this.products) ,addProduct() );
+    }
+
+    cargaDelArchivo(){
+        readFile('products.json','utf-8', (err, data)=>{
+            if (err) throw err;
+            console.log(data)
+            
+            });
+        }
+    }
+
+    console.log(fs.readFileSync("products.json",'utf-8'));
 
 
 
@@ -72,4 +98,4 @@ producto3.addProduct();
 
 
 
-console.log(getProducts);
+console.log(products);
