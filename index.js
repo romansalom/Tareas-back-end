@@ -1,12 +1,11 @@
-const fs = require('fs');
+const fs = require ('node:fs');
 
-const products = [];
 class ProductManager{
     static id = 1;
-   
-    
-     constructor(title , descriptions , price , thumbnail , code , stock , id ){
-       this.products = [],
+    productos;
+    constructor (path,title , descriptions , price , thumbnail , code , stock , id ){
+        this.path = path;
+        this.cargarElArchivo();
         this.title = title,
         this.descriptions= descriptions,
          this.price = price,
@@ -14,88 +13,81 @@ class ProductManager{
         this.code =code ,
         this.stock = stock,
         ProductManager.id;
-     }
-   
-    
-addProduct(){
-   
+}
+
+agregarProductos(producto){
     const productos = {
-       
+
         title : this.title,
         descriptions: this.descriptions,
         price : this.price ,
         thumbnail : this.thumbnail,
         code :  this.code,
         stock : this.stock,
-        id : ProductManager.id,
+        id : ProductManager.id,}
+    
         
-        
-        
-        }
-       
-       
-
-
-        const verificarCodigo = products.find(elemento => elemento.code === productos.code) 
+        const verificarCodigo = productos.find(elemento => elemento.code === productos.code) 
            
        if (verificarCodigo)
        {
         throw new Error('hay codes iguales')  }
         else{
             ProductManager.id ++ 
-            products.push(productos);
+            productos.push(productos);
             
         }
 
-       
-    
+        
+}
+getById(id){
+    const producto =this.getAll()
+    if(!this.checkLength(producto)){
+        return
+    }
+    let productos = productos.find(elemento => elemento.id == id)
+    return producto ? producto : null
+}
+checkLength(arr){
+    if (arr.length === 0){
+        console.error('El array esta vacio')
+        return false
+    }
+    return true
+}
+guardaEnArchivo(){
+    try{
+        fs.writeFileSync(this.path, JSON.stringify(this.producto));
+
+    }catch(err){
+        throw new Error (err);
+
     }
 
-     getById(id){
-        const products =this.getAll()
-        if(!this.checkLength(products)){
-            return
-        }
-        let productos = products.find(elemento => elemento.id == id)
-        return productos ? productos : null
+}
+
+cargarElArchivo(){
+    try{
+        this.productos = JSON.parse(fs.readFileSync(this.path, 'utf-8'));
+    }catch(err){
+        throw new Error(err);
     }
-    checkLength(arr){
-        if (arr.length === 0){
-            console.error('El array esta vacio')
-            return false
-        }
-        return true
-    }
+ 
+}
+}
 
-   
-
-    guardarCambios(){
-        fs.writeFileSync('products.json' , JSON.stringify(this.products) ,addProduct() );
-    }
-
-    cargaDelArchivo(){
-        readFile('products.json','utf-8', (err, data)=>{
-            if (err) throw err;
-            console.log(data)
-            
-            });
-        }
-    }
-
-    console.log(fs.readFileSync("products.json",'utf-8'));
-
-
+ProductManager = new ProductManager('productos.json');
 
 let producto1 = new ProductManager("regla" , "30 cm" , 50 , "www.regla.com" , 1100 , 23 );
 
 
-producto1.addProduct();
+producto1.agregarProductos();
 let producto2 = new ProductManager("escuadra" , "triangular" , 12, "www.escuadra.com" , 100 , 12);
-producto2.addProduct();
+producto2.agregarProductos();
 let producto3 = new ProductManager("lapiz" , "de color" , 11, "www.lapizdecolores.com" , 1200 , 6);
-producto3.addProduct();
+producto3.agregarProductos();
     
 
 
 
-console.log(products);
+console.log(ProductManager);;
