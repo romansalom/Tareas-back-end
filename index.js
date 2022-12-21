@@ -42,7 +42,7 @@ agregarProductos(producto){
 }
 getById(id){
     const producto =this.getAll()
-    if(!this.checkLength(producto)){
+    if(!this.checkLength(productos)){
         return
     }
     let productos = productos.find(elemento => elemento.id == id)
@@ -90,4 +90,4 @@ producto3.agregarProductos();
 
 
 
-console.log(ProductManager);;
+console.log(ProductManager);
