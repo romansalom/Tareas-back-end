@@ -78,10 +78,45 @@ addProduct(){
         }catch(err){
             throw new Error(err);
         }
+    }
+    modificarArchivo(id , nuevosDatos){
+        
+        getProducts.map((element)=>{
+            if(element.id == id ){
+              element.title = nuevosDatos.title;
+              element.description = nuevosDatos.description;
+              element.price = nuevosDatos.price;
+              element.thumbnail = nuevosDatos.thumbnail;
+              element.code = nuevosDatos.code;
+              element.stock = nuevosDatos.stock;
+              element.id = id;
+
+                console.log(id);
+            }
+            fs.writeFileSync('productos.json', JSON.stringify(getProducts));
+            
+        })
+    }
+
+        borrarProductos(id){
+            const productoborrar = [];
+            getProducts.map((element)=>{
+                if(element.id !== id){
+                    productoborrar.push(element);
+
+
+                }
+                fs.writeFileSync('productos.json', JSON.stringify(productoborrar));
+            })
+
+        }
+        
      
     }
+
     
-}
+
+
 
 
 
@@ -93,13 +128,17 @@ producto1.addProduct();
 let producto2 = new ProductManager("escuadra" , "triangular" , 12, "www.escuadra.com" , 100 , 12);
 producto2.addProduct();
 let producto3 = new ProductManager("lapiz" , "de color" , 11, "www.lapizdecolores.com" , 1200 , 6);
-
-let producto4 = new ProductManager("computadora " , "roja" , 15, "www.lapizdecolores.com" , 12040 , 64)
+producto3.addProduct();
+let producto4 = new ProductManager("marcador " , "roja" , 15, "www.lapizdecolores.com" , 12040 , 64)
 producto4.addProduct();
 producto4.guardaEnArchivo();
 producto4.cargarElArchivo();
 
-    producto4.getById(2);
+   // producto4.getById(2);
+    producto1.modificarArchivo(1,{title:"Goma" , description:"azul", code:"2331" , price:"234" , thumbnail:"www.gomaazul.com", stock:"111"});
+
+    producto2.borrarProductos(2);
+    
 
 
 
