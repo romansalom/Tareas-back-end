@@ -20,9 +20,9 @@ app.get('/products/:title', (req,res)=>{
 });
 app.get('/products/:id', (req,res)=>{
     const id = req.query.id();
-    
+    const obtenerproductosid = JSON.parse(fs.readFileSync('productos.json', this.id ,'utf-8'));
 
-    res.send(obtenerproductosid.find(e => e.id === Number( req.params.id)));
+    res.send(obtenerproductosid.find(e => e.id ===  req.params.id));
 });
 app.listen(port, ()=>{
     console.log('servidor levantado en el purto' , port );
