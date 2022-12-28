@@ -52,7 +52,8 @@ addProduct(){
      getById(id){
         const obtenerproductos = JSON.parse(fs.readFileSync('productos.json', 'utf-8'));
         obtenerproductos.map((element)=>{ if(element.id == id)
-            console.log(element) })
+            console.log(element)
+         })
 
         
         
@@ -75,7 +76,7 @@ addProduct(){
         try{
             
             const obtenerproductos = JSON.parse(fs.readFileSync('productos.json', 'utf-8'));
-            console.log(obtenerproductos);
+           // console.log(obtenerproductos);
         }catch(err){
             throw new Error(err);
         }
@@ -136,9 +137,9 @@ producto4.addProduct();
 //producto4.cargarElArchivo();
 
    // producto4.getById(2);
-  //  producto1.modificarArchivo(1,{title:"Goma" , descriptions:"azul", code:"2331" , price:"234" , thumbnail:"www.gomaazul.com", stock:"111",});
+  // producto1.modificarArchivo(1,{title:"Goma" , descriptions:"azul", code:"2331" , price:"234" , thumbnail:"www.gomaazul.com", stock:"111",});
 
- //   producto2.borrarProductos(2);
+   //producto2.borrarProductos(2);
     
 
 

@@ -1,4 +1,4 @@
-const e = require('express');
+
 const express = require('express');
 const fs = require('fs');
 const {ProductManager}= require('./productManager');
@@ -18,20 +18,20 @@ app.get('/products', (req,res)=>{
 });
 
 
-app.get('/products/:title', (req,res)=>{
-    const title = req.query.title;
-    const obtenerproductos = JSON.parse(fs.readFileSync('productos.json' ,'utf-8'));
+//app.get('/products/:title', (req,res)=>{
+ //  const title = req.query.title;
+   //const obtenerproductos = JSON.parse(fs.readFileSync('productos.json' ,'utf-8'));
 
-    res.send(obtenerproductos.find(e => e.title === req.params.title));
-});
+ //  res.send(obtenerproductos.find(e => e.title === req.params.title));
+//});
 
 
 
 app.get('/products/:id', (req,res)=>{
-    const id = req.query.id();
-    const obtenerproductos = JSON.parse(fs.readFileSync('productos.json' ,'utf-8'));
+    const id = req.query.id;
+    const obtenerproductos = JSON.parse(fs.readFileSync('productos.json' ,this.id,'utf-8'));
 
-    res.send(obtenerproductos.find(e=>e.id === req.params.id))
+    res.send(obtenerproductos.find(e =>parseInt(e.id) == parseInt( req.params.id)));
 });
 app.listen(port, ()=>{
     console.log('servidor levantado en el purto' , port );
