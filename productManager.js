@@ -70,6 +70,7 @@ addProduct(){
         }
     
     }
+ 
     cargarElArchivo(){
         try{
             
@@ -135,10 +136,15 @@ producto4.guardaEnArchivo();
 producto4.cargarElArchivo();
 
    // producto4.getById(2);
-    producto1.modificarArchivo(1,{title:"Goma" , description:"azul", code:"2331" , price:"234" , thumbnail:"www.gomaazul.com", stock:"111"});
+  //  producto1.modificarArchivo(1,{title:"Goma" , descriptions:"azul", code:"2331" , price:"234" , thumbnail:"www.gomaazul.com", stock:"111",});
 
-    producto2.borrarProductos(2);
+ //   producto2.borrarProductos(2);
     
 
 
+
+module.exports = {
+    getProducts
+
+}
 
