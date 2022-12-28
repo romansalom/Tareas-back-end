@@ -16,7 +16,7 @@ app.get('/products/:title', (req,res)=>{
     const title = req.query.title;
     const obtenerproductostitulo = JSON.parse(fs.readFileSync('productos.json', this.title ,'utf-8'));
 
-    res.send(obtenerproductostitulo);
+    res.send(obtenerproductostitulo.find(e => e.title === req.params.title));
 });
 app.get('/products/:id', (req,res)=>{
     const id = req.query.id();

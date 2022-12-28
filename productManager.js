@@ -130,7 +130,7 @@ let producto2 = new ProductManager("escuadra" , "triangular" , 12, "www.escuadra
 producto2.addProduct();
 let producto3 = new ProductManager("lapiz" , "de color" , 11, "www.lapizdecolores.com" , 1200 , 6);
 producto3.addProduct();
-let producto4 = new ProductManager("marcador " , "roja" , 15, "www.lapizdecolores.com" , 12040 , 64)
+let producto4 = new ProductManager("marcador", "roja" , 15, "www.lapizdecolores.com" , 12040 , 64)
 producto4.addProduct();
 producto4.guardaEnArchivo();
 producto4.cargarElArchivo();
@@ -144,7 +144,7 @@ producto4.cargarElArchivo();
 
 
 module.exports = {
-    getProducts
+   ProductManager: getProducts
 
 }
 
