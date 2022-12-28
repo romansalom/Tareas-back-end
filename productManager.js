@@ -132,8 +132,8 @@ let producto3 = new ProductManager("lapiz" , "de color" , 11, "www.lapizdecolore
 producto3.addProduct();
 let producto4 = new ProductManager("marcador", "roja" , 15, "www.lapizdecolores.com" , 12040 , 64)
 producto4.addProduct();
-producto4.guardaEnArchivo();
-producto4.cargarElArchivo();
+//producto4.guardaEnArchivo();
+//producto4.cargarElArchivo();
 
    // producto4.getById(2);
   //  producto1.modificarArchivo(1,{title:"Goma" , descriptions:"azul", code:"2331" , price:"234" , thumbnail:"www.gomaazul.com", stock:"111",});

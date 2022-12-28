@@ -14,15 +14,15 @@ app.get('/products', (req,res)=>{
 });
 app.get('/products/:title', (req,res)=>{
     const title = req.query.title;
-    const obtenerproductostitulo = JSON.parse(fs.readFileSync('productos.json', this.title ,'utf-8'));
+    const obtenerproductos = JSON.parse(fs.readFileSync('productos.json' ,'utf-8'));
 
-    res.send(obtenerproductostitulo.find(e => e.title === req.params.title));
+    res.send(obtenerproductos.find(e => e.title === req.params.title));
 });
 app.get('/products/:id', (req,res)=>{
     const id = req.query.id();
-    const obtenerproductosid = JSON.parse(fs.readFileSync('productos.json', this.id ,'utf-8'));
+    const obtenerproductos = JSON.parse(fs.readFileSync('productos.json' ,'utf-8'));
 
-    res.send(obtenerproductosid.find(e => e.id ===  req.params.id));
+    res.send(obtenerproductos[id-1]);
 });
 app.listen(port, ()=>{
     console.log('servidor levantado en el purto' , port );
