@@ -76,7 +76,7 @@ addProduct(){
         try{
             
             const obtenerproductos = JSON.parse(fs.readFileSync('productos.json', 'utf-8'));
-           // console.log(obtenerproductos);
+           return obtenerproductos;
         }catch(err){
             throw new Error(err);
         }
@@ -135,7 +135,10 @@ let producto4 = new ProductManager("marcador", "roja" , 15, "www.lapizdecolores.
 producto4.addProduct();
 //producto4.guardaEnArchivo();
 //producto4.cargarElArchivo();
-
+let producto5 = new ProductManager("teclado" ,"mecanico" , 13 , "www.teclado.com" , 23232 , 21);
+producto5.addProduct();
+//producto5.guardaEnArchivo();
+//producto5.cargarElArchivo();
    // producto4.getById(2);
   // producto1.modificarArchivo(1,{title:"Goma" , descriptions:"azul", code:"2331" , price:"234" , thumbnail:"www.gomaazul.com", stock:"111",});
 

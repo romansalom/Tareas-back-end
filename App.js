@@ -1,14 +1,15 @@
 
 const express = require('express');
 const fs = require('fs');
+const productManager = require('./productManager');
 const {ProductManager}= require('./productManager');
 
 const app = express();
 const port = 8080;
-
+const Pmanager = new ProductManager();
 app.get('/products', (req,res)=>{
 
-    const obtenerproductos = JSON.parse(fs.readFileSync('productos.json', 'utf-8'));
+    const obtenerproductos = Pmanager.cargarElArchivo();
     const limit = req.query.limit;
     if(limit) return res.send(obtenerproductos.slice(0,limit))
 
