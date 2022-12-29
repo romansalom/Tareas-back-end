@@ -1,15 +1,14 @@
-
 const express = require('express');
 const fs = require('fs');
-const productManager = require('./productManager');
 const {ProductManager}= require('./productManager');
 
 const app = express();
 const port = 8080;
-const Pmanager = new ProductManager();
-app.get('/products', (req,res)=>{
 
-    const obtenerproductos = Pmanager.cargarElArchivo();
+const Pmanager = new ProductManager;
+app.get('/products', async (req,res)=>{
+
+    const obtenerproductos = await Pmanager.cargarElArchivo();
     const limit = req.query.limit;
     if(limit) return res.send(obtenerproductos.slice(0,limit))
 
@@ -28,9 +27,9 @@ app.get('/products', (req,res)=>{
 
 
 
-app.get('/products/:id', (req,res)=>{
+app.get('/products/:id', async (req,res)=>{
     const id = req.query.id;
-    const obtenerproductos = JSON.parse(fs.readFileSync('productos.json' ,this.id,'utf-8'));
+    const obtenerproductos = await Pmanager.cargarElArchivo();
 
     res.send(obtenerproductos.find(e =>parseInt(e.id) == parseInt( req.params.id)));
 });

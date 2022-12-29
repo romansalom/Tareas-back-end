@@ -146,9 +146,4 @@ producto5.addProduct();
     
 
 
-
-module.exports = {
-   ProductManager: getProducts
-
-}
-
+   module.exports = {ProductManager}
